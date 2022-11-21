@@ -89,7 +89,7 @@ $menu = query("SELECT * FROM menu");
               <div class="col-lg-7">
                 <div class="header-text">
                   <h6>Selamat Datang</h6>
-                  <h4><em>Kalkulator</em> Matriks EntengSeng</h4>
+                  <h4><em>Kalkulator</em> Matriks Entengseng</h4>
                   <div class="main-button">
                     <a href="#most-popular">Mulai Sekarang</a>
                   </div>
@@ -104,7 +104,7 @@ $menu = query("SELECT * FROM menu");
             <div class="row">
               <div class="col-lg-12">
                 <div class="heading-section">
-                  <h4><em>List</em> Kalkulator</h4>
+                  <h4><em>Daftar</em> Kalkulator</h4>
                 </div>
 
                 <div class="row">
@@ -133,7 +133,7 @@ $menu = query("SELECT * FROM menu");
           <div class="gaming-library">
             <div class="col-lg-12">
               <div class="heading-section">
-                <h4><em>List</em> Kalkulator</h4>>
+                <h4><em>Daftar</em> Kalkulator</h4>>
               </div>
 
               <?php foreach($menu as $row) : ?>

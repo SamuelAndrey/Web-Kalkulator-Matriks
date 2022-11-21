@@ -113,7 +113,7 @@
 
                       if($kolom_a != $baris_b) {
                         echo "<script>
-                                alert('Error! Ordo tidak cocok');
+                                alert('Error! The number of columns in the first matrix should be equal to the number of rows in the second.');
                                 document.location.href = 'perkalian.php';
                               </script>";
                       } ?>

@@ -98,7 +98,7 @@
                                 <?php for($j=0;$j<$kolom;$j++) : ?>
                                   <td>
                                     <input 
-                                      type="number" class="form-control form-control-sm" 
+                                      type="text" class="form-control form-control-sm" 
                                       style="width: 100%;" name="a_matrix[<?=$i?>][<?=$j?>]" 
                                       autocomplete="off" required
                                       value='<?php if(isset($_POST['a_matrix'])) echo $am[$i][$j];?>'
@@ -122,7 +122,7 @@
                                 <?php for($j=0;$j<$kolom;$j++) : ?>
                                   <td>
                                     <input
-                                      type="number" class="form-control form-control-sm" 
+                                      type="text" class="form-control form-control-sm" 
                                       style="width: 100%;" name="b_matrix[<?=$i?>][<?=$j?>]" 
                                       autocomplete="off" required
                                       value='<?php if(isset($_POST['b_matrix'])) echo $bm[$i][$j];?>'
