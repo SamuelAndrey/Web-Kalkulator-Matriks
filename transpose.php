@@ -49,6 +49,8 @@
               <div class="col-lg-12">
                 <div class="content mb-5">
                   <div class="row">
+
+                    <!-- Proses input ordo -->
                     <form action="" method="POST" class="mb-5" autocomplete="off">
                       <div class="row">
                         <div class="col-lg-6">
@@ -73,6 +75,7 @@
                         <button type="submit" name="ordo" class="btn btn-outline-secondary rounded-pill">Generate Ordo!</button>
                       </div>
                     </form>
+                    <!-- Akhir proses input ordo -->
 
                   <!-- Input Matriks -->
                   <?php if(isset($_POST['ordo']) || isset($_POST['hitung'])) : ?>
@@ -90,7 +93,7 @@
                       <input type="hidden" name="kolom" value="<?= $kolom?>">
 
                       <div class="row">
-                        <!-- input matriks A -->
+                        <!-- Proses input matriks -->
                         <center>
                           <div class="col-lg-4">
                             <table>                          
@@ -111,15 +114,15 @@
                             </table>
                           </div>
                         </center>
+                        <!-- Akhir proses input matriks -->
 
                         <div class="d-grid gap-2 mt-4">
                           <button type="submit" name="hitung" class="btn btn-outline-secondary rounded-pill mb-3">Hitung!</button>
                         </div>
-                      </div>     
+                      </div>
                     </form>
                   <?php endif;?>
                   <!-- Input Matriks -->
-
 
                   <!-- Hasil Perhitungan -->
                   <?php
@@ -137,6 +140,7 @@
                       <h1 style="text-align: center;" class="mt-5">Hasil</h1>
 
                       <center>
+                        <!-- Proses menampilkan hasil Transpose -->
                         <table class="mt-2 mb-4" style="width: 50%;border-left:3px solid white;border-right:3px solid white;" >
                           <?php for($i=0;$i<$kolom;$i++) : ?>
                             <tr>
@@ -146,20 +150,21 @@
                             </tr>
                           <?php endfor; ?>
                         </table>
+                        <!-- Akhir proses menampilkan hasil Transpose -->
 
                         <div class="col-lg-12">
                           <p>Bila ada kesalahan dalam perhitungan mohon untuk menghubungi developer. Terima kasih.</p>
                         </div>
                       </center>
                     <?php endif;?>
-                    <!-- Hasil Perhitungan -->
+                    <!-- Akhir hasil Perhitungan -->
 
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Perhitungan Matriks -->
+          <!-- Akhir perhitungan Matriks -->
 
         </div>
       </div>

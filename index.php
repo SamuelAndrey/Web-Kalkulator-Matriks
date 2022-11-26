@@ -5,7 +5,6 @@ $menu = query("SELECT * FROM menu");
 
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,7 +22,6 @@ $menu = query("SELECT * FROM menu");
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-
   </head>
 <body>
 
@@ -47,8 +45,9 @@ $menu = query("SELECT * FROM menu");
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                        <img src="assets/images/logo.png" alt="">
+                    <a href="#!" class="logo">
+                        <h3 class="text-secondary">Entengseng!</h3>
+                        <!-- <img src="assets/images/logo.png" alt=""> -->
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Search End ***** -->
@@ -115,8 +114,8 @@ $menu = query("SELECT * FROM menu");
                           <img src="<?= $row['img']?>" alt="">
                           <h4><?= $row['judul']?><br><span><?= $row['span']?></span></h4>
                           <ul>
-                            <li><i class="fa fa-star"></i></li>
-                            <li><i class="fa fa-check"></i> Verify</li>
+                            <li><i class="fa fa-angle-double-right"></i></li>
+                            <li><i class="fa fa-check"></i> Ver..</li>
                           </ul>
                         </div>
                       </a>
@@ -142,8 +141,8 @@ $menu = query("SELECT * FROM menu");
                     <li><img src="<?= $row['img']?>" alt="" class="templatemo-item"></li>
                     <li><h4><?= $row['judul']?></h4><span><?= $row['span']?></span></li>
                     <li><h4>Calulation for</h4><span>Matrix</span></li>
-                    <li><h4>Hours Played</h4><span>634 H 22 Mins</span></li>
-                    <li><h4>Status Calculator</h4><span>Verify</span></li>
+                    <li><h4>Added</h4><span><?= $row['created_at']?></span></li>
+                    <li><h4>Status Calculator</h4><span>Verified</span></li>
                     <li><div class="main-border-button"><a href="<?= $row['link']?>">Mulai</a></div></li>
                   </ul>
                 </div>

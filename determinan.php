@@ -38,7 +38,7 @@
       <div class="col-lg-12">
         <div class="page-content mt-4">
 
-          <!-- Perhitungan Matriks -->
+          <!-- Determinan matriks -->
           <div class="game-details mb-5">
             <div class="row">
               <div class="col-lg-12">
@@ -50,24 +50,12 @@
                 <div class="content mb-5">
                   <div class="row">
                     <form action="" method="POST" class="mb-5" autocomplete="off">
-                      <div class="row">
-                        <div class="col-lg-6">
-                          <div class="">
-                            <div class="">
-                              <h4>Baris</h4>
-                              <input type="text" name="baris" class="form-control" placeholder="baris..." required>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-6">
-                          <div class="">
-                            <div class="">
-                              <h4>Kolom</h4>
-                              <input type="text" name="kolom" class="form-control" placeholder="kolom..." required>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <select class="form-select" aria-label="Default select example" name="option_ordo">
+                        <option selected>Select Ordo</option>
+                        <option value="two">2 x 2</option>
+                        <option value="three">3 x 3</option>
+                        <option value="four">4 x 4</option>
+                      </select>
 
                       <div class="d-grid gap-2 mt-4">
                         <button type="submit" name="ordo" class="btn btn-outline-secondary rounded-pill">Generate Ordo!</button>
@@ -79,8 +67,24 @@
                     <form action="" method="POST" autocomplete="off">
 
                       <?php 
-                      $baris = $_POST['baris'];
-                      $kolom = $_POST['kolom'];
+                      if (isset($_POST['option_ordo'])) {
+                        $ordo = $_POST['option_ordo'];
+
+                        if ($ordo == "two") {
+                          $baris = 2;
+                          $kolom = 2;
+                        } elseif ($ordo == "three") {
+                          $baris = 3;
+                          $kolom = 3;
+                        } elseif ($ordo == "four") {
+                          $baris = 4;
+                          $kolom = 4;
+                        } else {
+                          echo "<script>
+                                  document.location.href = 'determinan.php';
+                                </script>";
+                        }
+                      }
 
                       if(isset($_POST['a_matrix'])) {
                         $am = $_POST['a_matrix'];
@@ -88,22 +92,21 @@
                       
                       <input type="hidden" name="baris" value="<?= $baris?>">
                       <input type="hidden" name="kolom" value="<?= $kolom?>">
+                      <input type="hidden" name="option_ordo" value="<?= $ordo?>">
 
                       <div class="row">
-                        <!-- input matriks A -->
+                        <!-- Proses input matriks -->
                         <center>
                           <div class="col-lg-4">
                             <table>                          
-                              <?php for($i=0;$i<$baris;$i++) : ?>
+                              <?php for ($i=0;$i<$baris;$i++) : ?>
                               <tr>
-                                  <?php for($j=0;$j<$kolom;$j++) : ?>
+                                  <?php for ($j=0;$j<$kolom;$j++) : ?>
                                   <td>
-                                      <input 
-                                      type="text" class="form-control form-control-sm" 
+                                      <input type="text" class="form-control form-control-sm" 
                                       style="width: 100%;" name="a_matrix[<?=$i?>][<?=$j?>]" 
                                       autocomplete="off" required
-                                      value='<?php if(isset($_POST['a_matrix'])) echo $am[$i][$j];?>'
-                                      />
+                                      value='<?php if(isset($_POST['a_matrix'])) echo $am[$i][$j];?>'/>
                                   </td>
                                   <?php endfor; ?>
                               </tr>
@@ -111,6 +114,7 @@
                             </table>
                           </div>
                         </center>
+                        <!-- Akhir proses input matriks -->
 
                         <div class="d-grid gap-2 mt-4">
                           <button type="submit" name="hitung" class="btn btn-outline-secondary rounded-pill mb-3">Hitung!</button>
@@ -118,48 +122,55 @@
                       </div>     
                     </form>
                   <?php endif;?>
-                  <!-- Input Matriks -->
+                  <!-- Akhir input Matriks -->
 
 
-                  <!-- Hasil Perhitungan -->
+                  <!-- Proses perhitungan dan menampilkan hasil -->
                   <?php
                     if(isset($_POST['hitung'])) :
                       $am = $_POST['a_matrix']; 
                       $baris = $_POST['baris'];
-                      $kolom = $_POST['kolom']; 
+                      $kolom = $_POST['kolom'];
+                      $opion_ordo = $_POST['option_ordo'];
                       
-                      for($i = 0;$i < $baris;$i++) {
-                        for($j = 0;$j < $kolom;$j++) {
-                          $trasnpose[$j][$i] = $am[$i][$j];
-                        }
+                      if ($ordo == "two") {
+                        $hasil = ($am[0][0] * $am[1][1]) - ($am[0][1] * $am[1][0]);
+
+                      } elseif ($ordo == "three") {
+                        $hasil  = (($am[0][0] * $am[1][1] * $am[2][2]) + ($am[0][1] * $am[1][2] * $am[2][0]) + ($am[0][2] * $am[1][0] * $am[2][1])) -
+                                  (($am[2][0] * $am[1][1] * $am[0][2]) + ($am[2][1] * $am[1][2] * $am[0][0]) + ($am[2][2] * $am[1][0] * $am[0][1]));
+
+                      } elseif ($ordo == "four") {
+                        $hasil =  $am[0][3] * $am[1][2] * $am[2][1] * $am[3][0] - $am[0][2] * $am[1][3] * $am[2][1] * $am[3][0] -
+                                  $am[0][3] * $am[1][1] * $am[2][2] * $am[3][0] + $am[0][1] * $am[1][3] * $am[2][2] * $am[3][0] +
+                                  $am[0][2] * $am[1][1] * $am[2][3] * $am[3][0] - $am[0][1] * $am[1][2] * $am[2][3] * $am[3][0] -
+                                  $am[0][3] * $am[1][2] * $am[2][0] * $am[3][1] + $am[0][2] * $am[1][3] * $am[2][0] * $am[3][1] +
+                                  $am[0][3] * $am[1][0] * $am[2][2] * $am[3][1] - $am[0][0] * $am[1][3] * $am[2][2] * $am[3][1] -
+                                  $am[0][2] * $am[1][0] * $am[2][3] * $am[3][1] + $am[0][0] * $am[1][2] * $am[2][3] * $am[3][1] +
+                                  $am[0][3] * $am[1][1] * $am[2][0] * $am[3][2] - $am[0][1] * $am[1][3] * $am[2][0] * $am[3][2] -
+                                  $am[0][3] * $am[1][0] * $am[2][1] * $am[3][2] + $am[0][0] * $am[1][3] * $am[2][1] * $am[3][2] +
+                                  $am[0][1] * $am[1][0] * $am[2][3] * $am[3][2] - $am[0][0] * $am[1][1] * $am[2][3] * $am[3][2] -
+                                  $am[0][2] * $am[1][1] * $am[2][0] * $am[3][3] + $am[0][1] * $am[1][2] * $am[2][0] * $am[3][3] +
+                                  $am[0][2] * $am[1][0] * $am[2][1] * $am[3][3] - $am[0][0] * $am[1][2] * $am[2][1] * $am[3][3] -
+                                  $am[0][1] * $am[1][0] * $am[2][2] * $am[3][3] + $am[0][0] * $am[1][1] * $am[2][2] * $am[3][3];
+                                  
+                      } else {
+                        echo "<script>
+                                document.location.href = 'determinan.php';
+                              </script>";
                       } ?>
 
                       <h1 style="text-align: center;" class="mt-5">Hasil</h1>
-
-                      <center>
-                        <table class="mt-2 mb-4" style="width: 50%;border-left:3px solid white;border-right:3px solid white;" >
-                          <?php for($i=0;$i<$kolom;$i++) : ?>
-                            <tr>
-                              <?php for($j=0;$j<$baris;$j++) : ?>
-                                <td><input type="number" style="width: 100%;" class="form-control form-control-sm" value="<?= $trasnpose[$i][$j]?>" disabled readonly></td>
-                              <?php endfor; ?>
-                            </tr>
-                          <?php endfor; ?>
-                        </table>
-
-                        <div class="col-lg-12">
-                          <p>Bila ada kesalahan dalam perhitungan mohon untuk menghubungi developer. Terima kasih.</p>
-                        </div>
-                      </center>
+                      <h1 style="text-align: center;" class="mt-5"><?= $hasil?></h1>
                     <?php endif;?>
-                    <!-- Hasil Perhitungan -->
+                    <!-- Akhir proses perhitungan dan menampilkan hasil -->
 
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Perhitungan Matriks -->
+          <!-- Akhir determinan matriks -->
 
         </div>
       </div>

@@ -49,6 +49,8 @@
               <div class="col-lg-12">
                 <div class="content mb-5">
                   <div class="row">
+
+                    <!-- Proses input ordo -->
                     <form action="" method="POST" class="mb-5" autocomplete="off">
                       <div class="row">
                         <div class="col-lg-6">
@@ -93,12 +95,12 @@
                         <button type="submit" name="ordo" class="btn btn-outline-secondary rounded-pill">Generate Ordo!</button>
                       </div>
                     </form>
+                    <!-- Akhir proses input ordo -->
 
                   <!-- Input Matriks -->
                   <?php if(isset($_POST['ordo']) || isset($_POST['hitung'])) : ?>
 
                     <form action="" method="POST" autocomplete="off">
-
                       <?php 
                       $baris_a = $_POST['baris_a'];
                       $kolom_a = $_POST['kolom_a'];
@@ -111,6 +113,7 @@
                         $bm = $_POST['b_matrix'];
                       } 
 
+                      # validasi kolom matriks A dan baris matriks B
                       if($kolom_a != $baris_b) {
                         echo "<script>
                                 alert('Error! The number of columns in the first matrix should be equal to the number of rows in the second.');
@@ -124,7 +127,7 @@
                       <input type="hidden" name="kolom_b" value="<?= $kolom_b?>">
 
                       <div class="row">
-                        <!-- input matriks A -->
+                        <!-- Proses input matriks A -->
                         <div class="col-lg-4">
                           <table>                          
                             <?php for($i=0;$i<$baris_a;$i++) : ?>
@@ -143,12 +146,13 @@
                             <?php endfor; ?>
                           </table>
                         </div>
+                        <!-- Akhir proses input matriks A -->
 
                         <div class="col-lg-4">
-                          <h1 style="text-align: center;">Kali</h1>
+                          <h1 class="text-center"><i class="fa fa-times"></i></h1>
                         </div>
 
-                        <!-- input matriks B -->
+                        <!-- Proses input matriks B -->
                         <div class="col-lg-4">
                           <table>
                             <?php for($i=0;$i<$baris_b;$i++) : ?>
@@ -167,6 +171,7 @@
                             <?php endfor; ?>
                           </table>
                         </div>
+                        <!-- Akhir proses input matriks B -->
 
                         <div class="d-grid gap-2 mt-4">
                           <button type="submit" name="hitung" class="btn btn-outline-secondary rounded-pill mb-3">Hitung!</button>
@@ -174,7 +179,7 @@
                       </div>     
                     </form>
                   <?php endif;?>
-                  <!-- Input Matriks -->
+                  <!-- Akhir input Matriks -->
 
 
                   <!-- Hasil Perhitungan -->
@@ -189,23 +194,26 @@
                       $baris_b = $_POST['baris_b'];
                       $kolom_b = $_POST['kolom_b'];
                       
+                      # Inisialisasi hasil = 0
                       for($i = 0;$i < $baris_a;$i++) {
                         for($j = 0;$j < $kolom_b;$j++) {
                           $hasil[$i][$j] = 0;
                         }
                       }
-
+                      
+                      # Proses perhitungan perkalian matriks
                       for($i = 0;$i < $baris_a;$i++) {
                         for($j = 0;$j < $kolom_b;$j++) {
                           for($k = 0;$k < $kolom_a;$k++) {
-                              $hasil[$i][$j] += $am[$i][$k] * $bm[$k][$j];
+                              $hasil[$i][$j] += $am[$i][$k] * $bm[$k][$j]; # Proses perhitungan
                           }
                         }
-                      } ?>
+                      }?>
 
                       <h1 style="text-align: center;" class="mt-5">Hasil</h1>
 
                       <center>
+                        <!-- Proses menampilkan output hasil perkalian matriks -->
                         <table class="mt-2 mb-4" style="width: 50%;border-left:3px solid white;border-right:3px solid white;">
                           <?php for($i = 0;$i < $baris_a;$i++) : ?>
                             <tr>
@@ -215,20 +223,21 @@
                             </tr>
                           <?php endfor; ?>
                         </table>
+                        <!-- Akhir proses menampilkan output hasil perkalian matriks -->
 
                         <div class="col-lg-12">
                           <p>Bila ada kesalahan dalam perhitungan mohon untuk menghubungi developer. Terima kasih.</p>
                         </div>
                       </center>
                     <?php endif;?>
-                    <!-- Hasil Perhitungan -->
+                    <!-- Akhir hasil Perhitungan -->
 
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Perhitungan Matriks -->
+          <!-- Akhir perhitungan Matriks -->
 
         </div>
       </div> 
