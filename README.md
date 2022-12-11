@@ -1,10 +1,10 @@
 # Website Kalkulator Matriks
 
-Fitur:
--> Penjumlahan Matriks (ordo bebas)
--> Pengurangan Matriks (ordo bebas)
--> Perkalian Matriks (ordo bebas)
--> Transpose Matriks (ordo bebas)
--> Determinan Matriks (2x2, 3x3, 4x4)
+Fitur:<br>
+-> Penjumlahan Matriks (ordo bebas)<br>
+-> Pengurangan Matriks (ordo bebas)<br>
+-> Perkalian Matriks (ordo bebas)<br>
+-> Transpose Matriks (ordo bebas)<br>
+-> Determinan Matriks (2x2, 3x3, 4x4)<br>
 
 ## Link : http://entengseng.my.id
