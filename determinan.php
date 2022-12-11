@@ -160,8 +160,8 @@
                               </script>";
                       } ?>
 
-                      <h1 style="text-align: center;" class="mt-5">Hasil</h1>
-                      <h1 style="text-align: center;" class="mt-5"><?= $hasil?></h1>
+                      <h1 style="text-align: center;" class="mt-3">Hasil</h1>
+                      <h1 style="text-align: center;" class="mt-3 mb-3"><?= $hasil?></h1>
                     <?php endif;?>
                     <!-- Akhir proses perhitungan dan menampilkan hasil -->
 
